@@ -16,15 +16,18 @@ use App\Http\Controllers\DaftarController;
 |
 */
 
+// Menampilkan halaman beranda
 Route::get('/', function () {
     return view('beranda');
 })->name('beranda');
 
+// Menampilkan halaman daftar
 Route::prefix('daftar')->group(function () {
     Route::get('/', [DaftarController::class, 'index'])->name('daftar');
     Route::post('/simpan', [DaftarController::class, 'store'])->name('daftar.store');
 });
 
+// Menampilkan halaman hasil
 Route::get('/hasil', [HasilController::class, 'index'])->name('hasil');
 
 Route::get('/download/{filename}', [HasilController::class, 'download'])->name('download');

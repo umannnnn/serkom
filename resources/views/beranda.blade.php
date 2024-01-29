@@ -2,12 +2,14 @@
 
 <?php
 
+//deklarasi array untuk pilihan beasiswa
 $pilihans = [
     ['title' => 'Akademis', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.' , 'benefit1' => 'Dana Pendaftaran', 'benefit2' => 'Dana SPP/Uang Kuliah Tunggal', 'benefit3' => 'Dana Tunjangan Buku', 'benefit4' => 'Dana Transportasi', 'benefit5' => 'Dana keadaaan darurat (jika diperlukan)'],
     ['title' => 'Prestasi & Bakat', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.' , 'benefit1' => 'Dana SPP/Uang Kuliah Tunggal', 'benefit2' => 'Dana Tunjangan Buku', 'benefit3' => 'Dana Hidup Bulanan', 'benefit4' => 'Dana Lomba Internasional', 'benefit5' => 'Dana keadaaan darurat (jika diperlukan)'],
     ['title' => 'Riset & Penelitian', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.' , 'benefit1' => 'Dana Penelitian Tesis/Disertasi', 'benefit2' => 'Dana Seminar Internasional', 'benefit3' => 'Dana Publikasi Jurnal Internasional', 'benefit4' => 'Dana Lomba Internasional', 'benefit5' => 'Dana keadaaan darurat (jika diperlukan)'],
 ];
 
+//deklarasi array untuk penjelasan beasiswa
 $items = [
     ['title' => 'Beasiswa Akademis' , 'description' => 'Beasiswa Akademis diberikan kepada mahasiswa yang mencapai prestasi akademis tinggi. Beasiswa ini bertujuan untuk memberikan dukungan finansial kepada mereka yang menunjukkan keunggulan dalam studi mereka. Kriteria pemberian beasiswa meliputi capaian nilai tinggi, partisipasi aktif dalam kegiatan akademik, dan rekomendasi dari dosen atau pengawas akademis.'],
     ['title' => 'Beasiswa Prestasi & Bakat' , 'description' => 'Beasiswa Prestasi & Bakat diberikan kepada mahasiswa yang memiliki prestasi di luar kegiatan akademis, seperti olahraga, seni, atau bidang lainnya. Beasiswa ini bertujuan untuk mendukung perkembangan bakat dan prestasi mereka di luar kelas. Kriteria pemberian beasiswa melibatkan pencapaian prestasi yang signifikan, portofolio bakat, dan rekomendasi dari pelatih atau mentor.'],

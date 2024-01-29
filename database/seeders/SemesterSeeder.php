@@ -8,9 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class SemesterSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    // Menambahkan data ke dalam tabel semester
     public function run(): void
     {
         Semester::create([

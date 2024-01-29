@@ -14,6 +14,7 @@ class DaftarController extends Controller
      */
     public function index()
     {
+        // Menampilkan halaman daftar dengan data beasiswa dan semester
         return view('daftar', [
             'beasiswas' => Beasiswa::all(),
             'semesters' => Semester::all(),
@@ -33,6 +34,7 @@ class DaftarController extends Controller
      */
     public function store(Request $request)
     {
+        // Validasi data yang diinputkan oleh user
         $data = request()->validate([
             'nama' => 'required',
             'email' => 'required | email | email:rfc,dns',
@@ -42,7 +44,8 @@ class DaftarController extends Controller
             'beasiswa' => 'required',
             'berkas' => 'required | file | mimes:pdf,jpg,png',
         ]);
-
+        
+        // Menyimpan berkas yang diupload oleh user
         if(request('berkas')){
             $berkas = request('berkas')->store('berkas','public');
             $data['berkas'] = basename($berkas);
@@ -66,6 +69,7 @@ class DaftarController extends Controller
             'status_ajuan' => 'Belum Diverifikasi',
         ]);
 
+        // Mengambil data pendaftar terbaru untuk ditampilkan di halaman hasil
         $data = Pendaftar::latest()->first();
         return redirect()->route('hasil')->with('data', $data);
     }

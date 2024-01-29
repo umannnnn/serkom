@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beasiswa extends Model
 {
+    // Mendefinisikan relasi many-to-one dengan model Pendaftar
     public function pendaftar()
     {
         return $this->belongsTo(Pendaftar::class);
