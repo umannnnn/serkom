@@ -3,7 +3,7 @@
 <?php
 
 //deklarasi array untuk pilihan beasiswa
-$pilihans = [
+$pilihanBeasiswa = [
     ['title' => 'Akademis', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.' , 'benefit1' => 'Dana Pendaftaran', 'benefit2' => 'Dana SPP/Uang Kuliah Tunggal', 'benefit3' => 'Dana Tunjangan Buku', 'benefit4' => 'Dana Transportasi', 'benefit5' => 'Dana keadaaan darurat (jika diperlukan)'],
     ['title' => 'Prestasi & Bakat', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.' , 'benefit1' => 'Dana SPP/Uang Kuliah Tunggal', 'benefit2' => 'Dana Tunjangan Buku', 'benefit3' => 'Dana Hidup Bulanan', 'benefit4' => 'Dana Lomba Internasional', 'benefit5' => 'Dana keadaaan darurat (jika diperlukan)'],
     ['title' => 'Riset & Penelitian', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.' , 'benefit1' => 'Dana Penelitian Tesis/Disertasi', 'benefit2' => 'Dana Seminar Internasional', 'benefit3' => 'Dana Publikasi Jurnal Internasional', 'benefit4' => 'Dana Lomba Internasional', 'benefit5' => 'Dana keadaaan darurat (jika diperlukan)'],
@@ -43,7 +43,7 @@ $items = [
                 <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam voluptatem deserunt blanditiis non porro pariatur provident soluta?</p>
             </div>
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
-                @foreach ($pilihans as $pilihan)
+                @foreach ($pilihanBeasiswa as $pilihan)
                 <!-- Pricing Card -->
                 <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
                     <h3 class="mb-4 text-2xl font-semibold">{{ $pilihan['title'] }}</h3>
