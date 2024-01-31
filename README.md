@@ -20,24 +20,13 @@ Aplikasi ini merupakan aplikasi untuk pendaftaran beasiswa, Aplikasi pendaftaran
 ## Direktori Utama
 
 -   `app` : Berisi kode aplikasi inti, termasuk model, controller, middleware, dan lainnya.
-
 -   `bootstrap`: Mengandung file yang bertanggung jawab untuk memuat framework Laravel dan menginisialisasi pengaturan awal.
-
 -   `config`: Tempat konfigurasi aplikasi, seperti file untuk pengaturan database, pengaturan cache, dan lainnya.
-
 -   `database`: Berisi file migrasi dan seed untuk mengelola struktur database dan data awal.
-
 -   `public`: Direktori root yang dapat diakses secara publik. File index.php yang berada di sini berfungsi sebagai titik masuk utama aplikasi.
-
 -   `resources`: Berisi template, file penerjemahan, dan aset lainnya seperti file CSS, JavaScript, dan gambar.
-
 -   `routes`: Tempat mendefinisikan rute aplikasi web. File web.php umumnya digunakan untuk menentukan rute-rute untuk HTTP.
-
 -   `storage`: Menyimpan file-file yang dihasilkan oleh aplikasi, seperti file log, file cache, dan file sesi.
-
--   `tests`: Tempat untuk menyimpan berkas pengujian aplikasi.
-
--   `vendor`: Berisi ketergantungan pihak ketiga yang diinstal oleh Composer.
 
 ## File Tambahan
 
