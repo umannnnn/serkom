@@ -1,66 +1,68 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## About this Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi ini merupakan aplikasi untuk pendaftaran beasiswa, Aplikasi pendaftaran beasiswa ini bisa diakses oleh pengguna yang ingin mendaftar beasiswa dengan beberapa pilihan beasiswa dan terdapat ketentuan mengajukan beasiswa dengan melihat Index Prestasi Kumulatif (IPK) terakhir yang didapat.
 
-## About Laravel
+## Framework 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   `Laravel` => Framework PHP
+-   `Tailwind CSS` => Framework CSS untuk style
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tools
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   `Visual Studio Code` => Code Editor
+-   `Laragon` => simulasi Web Server
 
-## Learning Laravel
+## Other Library
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   `ApexChart` => Library dengan JavaScript untuk grafik
+-   `JQuery`
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Direktori Utama
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   `app` : Berisi kode aplikasi inti, termasuk model, controller, middleware, dan lainnya.
 
-## Laravel Sponsors
+-   `bootstrap`: Mengandung file yang bertanggung jawab untuk memuat framework Laravel dan menginisialisasi pengaturan awal.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   `config`: Tempat konfigurasi aplikasi, seperti file untuk pengaturan database, pengaturan cache, dan lainnya.
 
-### Premium Partners
+-   `database`: Berisi file migrasi dan seed untuk mengelola struktur database dan data awal.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   `public`: Direktori root yang dapat diakses secara publik. File index.php yang berada di sini berfungsi sebagai titik masuk utama aplikasi.
 
-## Contributing
+-   `resources`: Berisi template, file penerjemahan, dan aset lainnya seperti file CSS, JavaScript, dan gambar.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   `routes`: Tempat mendefinisikan rute aplikasi web. File web.php umumnya digunakan untuk menentukan rute-rute untuk HTTP.
 
-## Code of Conduct
+-   `storage`: Menyimpan file-file yang dihasilkan oleh aplikasi, seperti file log, file cache, dan file sesi.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+-   `tests`: Tempat untuk menyimpan berkas pengujian aplikasi.
 
-## Security Vulnerabilities
+-   `vendor`: Berisi ketergantungan pihak ketiga yang diinstal oleh Composer.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## File Tambahan
 
-## License
+-   `.editorconfig` : File ini digunakan untuk mengkonfigurasi pengaturan editor kode. Ini membantu memastikan konsistensi gaya kode antara berbagai editor dan pengembang.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   `.env` : Ini adalah file konfigurasi lingkungan yang menyimpan pengaturan khusus aplikasi seperti koneksi database, URL, dan pengaturan lingkungan lainnya. File ini tidak boleh dibagikan ke repositori karena berisi informasi rahasia.
+
+-   `.env.example` : File contoh dari .env yang digunakan untuk memberikan petunjuk dan contoh konfigurasi. Biasanya, ini digunakan untuk memastikan bahwa pengembang dapat membuat salinan .env mereka sendiri dengan memasukkan nilai yang sesuai.
+
+-   `.gitignore` : File ini menyatakan daftar file dan direktori yang tidak boleh disertakan dalam repositori Git. Ini sering mencakup file konfigurasi lokal, cache, dan file sementara.
+
+-   `artisan` : Ini adalah skrip baris perintah untuk Laravel yang digunakan untuk menjalankan perintah artisan, seperti migrasi database, menghasilkan kode, dan tugas-tugas lainnya.
+
+-   `composer.json` : File ini berisi informasi tentang proyek dan dependensinya. Ini digunakan oleh Composer, manajer paket PHP, untuk mengelola dependensi dan menginstal paket yang dibutuhkan.
+
+-   `composer.lock` : File ini dibuat oleh Composer dan mengunci versi paket yang digunakan oleh proyek. Ini memastikan bahwa versi paket yang sama digunakan oleh semua pengembang.
+
+-   `package-lock.json` : File ini diciptakan oleh npm dan digunakan untuk mengunci versi paket JavaScript yang digunakan oleh proyek.
+
+-   `package.json` : File konfigurasi untuk npm (Node Package Manager), yang mengelola dependensi JavaScript, skrip, dan konfigurasi proyek lainnya.
+
+-   `postcss.config.js` : File konfigurasi untuk PostCSS, alat pengolahan CSS yang sering digunakan dalam pengembangan web modern.
+
+-   `readme.md` : Dokumen utama proyek yang berisi informasi umum, panduan instalasi, dan petunjuk penggunaan.
+
+-   `tailwind.config.js` : File konfigurasi untuk Tailwind CSS, kerangka kerja desain responsif yang sering digunakan dalam proyek Laravel.
+
+-   `vite.config.js` : File konfigurasi untuk Vite, bundler JavaScript yang cepat dan modern yang dapat digunakan untuk pengembangan frontend dalam proyek Laravel.
