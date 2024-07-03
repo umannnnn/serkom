@@ -1,5 +1,55 @@
 @extends('layouts.app')
 
+<?php
+$pendaftars = [
+    [
+        'nama' => 'John Doe',
+        'email' => 'john@gmail.com',
+        'nomor_hp' => '08123456789',
+        'semesters' => [
+            ['semester' => 'Semester 1', 'ipk' => '3.5'],
+            ['semester' => 'Semester 2', 'ipk' => '3.2'],
+            ['semester' => 'Semester 3', 'ipk' => '2.9'],
+            ['semester' => 'Semester 4', 'ipk' => '3.1'],
+            ['semester' => 'Semester 5', 'ipk' => '3.4'],
+            ['semester' => 'Semester 6', 'ipk' => '3.0'],
+            ['semester' => 'Semester 7', 'ipk' => '3.2'],
+            ['semester' => 'Semester 8', 'ipk' => '3.6'],
+        ],
+    ],
+    [
+        'nama' => 'Jane Doe',
+        'email' => 'jane@gmail.com',
+        'nomor_hp' => '08124124124',
+        'semesters' => [
+            ['semester' => 'Semester 1', 'ipk' => '3.2'],
+            ['semester' => 'Semester 2', 'ipk' => '3.0'],
+            ['semester' => 'Semester 3', 'ipk' => '3.1'],
+            ['semester' => 'Semester 4', 'ipk' => '3.5'],
+            ['semester' => 'Semester 5', 'ipk' => '3.3'],
+            ['semester' => 'Semester 6', 'ipk' => '3.2'],
+            ['semester' => 'Semester 7', 'ipk' => '3.4'],
+            ['semester' => 'Semester 8', 'ipk' => '3.8'],
+        ],
+    ],
+    [
+        'nama' => 'Jhonny Doe',
+        'email' => 'jhonny@gmail.com',
+        'nomor_hp' => '087214214484',
+        'semesters' => [
+            ['semester' => 'Semester 1', 'ipk' => '2.9'],
+            ['semester' => 'Semester 2', 'ipk' => '3.0'],
+            ['semester' => 'Semester 3', 'ipk' => '3.2'],
+            ['semester' => 'Semester 4', 'ipk' => '3.1'],
+            ['semester' => 'Semester 5', 'ipk' => '2.8'],
+            ['semester' => 'Semester 6', 'ipk' => '3.3'],
+            ['semester' => 'Semester 7', 'ipk' => '3.0'],
+            ['semester' => 'Semester 8', 'ipk' => '3.2'],
+        ],
+    ],
+];
+?>
+
 @section('content')
 
 <section class="bg-white dark:bg-gray-900">
@@ -9,42 +59,44 @@
             @csrf
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
-                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Masukan Nama</label>
-                    <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukan Nama Anda" value="{{ old('nama') }}" placeholder="Masukan Nama Anda" required>
+                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih nama yang terdaftar</label>
+                    <select id="nama" name="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" onchange="updateIPK()">
+                        <option value="" disabled selected>Pilih Nama Anda</option>
+                        @foreach ($pendaftars as $data)
+                            <option value="{{ $data['nama'] }}">{{ $data['nama'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="sm:col-span-2">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Masukan Email</label>
-                    <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 {{ $errors->has('email') ? 'border-red-500' : '' }}" placeholder="Masukan Email Anda" value="{{ old('email') }}" required="">
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Masukkan Email</label>
+                    <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 {{ $errors->has('email') ? 'border-red-500' : '' }}" placeholder="Masukkan Email Anda" value="{{ old('email') }}" required="">
                     @if ($errors->has('email'))
                         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> {{ $errors->first('email') }}</p>
                     @endif
                 </div>                
                 <div class="sm:col-span-2">
                     <label for="nomor_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor HP</label>
-                    <input type="number" name="nomor_hp" id="nomor_hp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 {{ $errors->has('nomor_hp') ? 'border-red-500' : '' }}" placeholder="083123124155" value="{{ old('nomor_hp') }}" required="">
+                    <input type="text" name="nomor_hp" id="nomor_hp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 {{ $errors->has('nomor_hp') ? 'border-red-500' : '' }}" placeholder="Masukan nomor hp" value="{{ old('nomor_hp') }}" required="">
                     @if ($errors->has('nomor_hp'))
                         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> {{ $errors->first('nomor_hp') }}</p>
                     @endif
                 </div>                
                 <div>
-                    <label for="semester" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Semester saat ini</label>
+                    <label for="semester" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Semester</label>
                     <select id="semester" name="semester" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" onchange="updateIPK()">
                         <option value="" disabled selected>Pilih Semester</option>
-                        @foreach ($semesters as $semester)
-                            <option value="{{ $semester->id }}">{{ $semester->nama }}</option>
-                        @endforeach
                     </select>
-                </div>
+                </div>                
                 <div>
                     <label for="ipk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">IPK terakhir</label>
-                    <input type="number" name="ipk" id="ipk" value="{{ old('ipk') }}" autocomplete="ipk" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" readonly required="">
+                    <input type="text" name="ipk" id="ipk" value="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" readonly required="">
                 </div> 
                 <div class="sm:col-span-2">
                     <label for="beasiswa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilihan Beasiswa</label>
                     <select id="beasiswa" name="beasiswa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option value="" disabled selected>Pilih Beasiswa</option>
                         @foreach ($beasiswas as $beasiswa)
-                            <option value="{{ $beasiswa->id }}">{{ $beasiswa->nama }}</option>
+                            <option value="{{ $beasiswa->nama }}">{{ $beasiswa->nama }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -61,48 +113,91 @@
 </section>
 
 <script>
-    // menampilkan ipk
-    var ipkValues = <?php echo json_encode($semesters); ?>;
-    // menampilkan ipk
+    function updateSemesterOptions() {
+        var nama = document.getElementById('nama').value;
+        var semesterSelect = document.getElementById('semester');
+        
+        // Temukan data pendaftar berdasarkan nama yang dipilih
+        var pendaftar = @json($pendaftars);
+
+        // Kosongkan pilihan semester sebelumnya
+        semesterSelect.innerHTML = '<option value="" disabled selected>Pilih Semester</option>';
+
+        // Temukan data pendaftar yang sesuai dengan nama yang dipilih
+        for (var i = 0; i < pendaftar.length; i++) {
+            if (pendaftar[i].nama === nama) {
+                // Tambahkan opsi semester sesuai dengan data pendaftar
+                for (var j = 0; j < pendaftar[i].semesters.length; j++) {
+                    var option = document.createElement('option');
+                    option.value = pendaftar[i].semesters[j].semester;
+                    option.textContent = pendaftar[i].semesters[j].semester;
+                    semesterSelect.appendChild(option);
+                }
+                break;
+            }
+        }
+
+        // Panggil fungsi updateIPK untuk mengisi IPK terakhir yang sesuai
+        updateIPK();
+    }
+
     function updateIPK() {
-        // mendapatkan id semester
-        var selectedSemesterId = document.getElementById("semester").value;
-        // mencari semester yang dipilih
-        var selectedSemester = ipkValues.find(function(semester) {
-            // mencocokan id semester
-            return semester.id == selectedSemesterId;
-        });
-        // menampilkan ipk
-        if (selectedSemester) {
-            // menampilkan ipk
-            document.getElementById("ipk").value = selectedSemester.ipk;
-            // menampilkan beasiswa
-            if (selectedSemester.ipk < 3) {
-                // menampilkan beasiswa
-                document.getElementById("beasiswa").disabled = true;
-                const berkas = document.getElementById("berkas");
-                berkas.disabled = true;
-                // menampilkan tombol
-                const tombol = document.getElementById("simpan");
-                tombol.disabled = true;
-                tombol.classList.remove("bg-blue-300");
-                tombol.classList.add("bg-gray-300");
-            }else{
-                // menampilkan beasiswa
-                const beasiswa = document.getElementById("beasiswa");
-                beasiswa.disabled = false;
-                beasiswa.focus();
-                // menampilkan berkas
-                const berkas = document.getElementById("berkas");
-                berkas.disabled = false;
-                // menampilkan tombol
-                const tombol = document.getElementById("simpan");
-                tombol.disabled = false;
-                tombol.classList.add("bg-blue-700");
-                tombol.classList.remove("bg-gray-300");
+        var nama = document.getElementById('nama').value;
+        var semester = document.getElementById('semester').value;
+        var emailInput = document.getElementById('email');
+        var nomorHpInput = document.getElementById('nomor_hp');
+        var ipkInput = document.getElementById('ipk');
+
+        // Temukan data pendaftar berdasarkan nama yang dipilih
+        var pendaftar = @json($pendaftars);
+
+        for (var i = 0; i < pendaftar.length; i++) {
+            if (pendaftar[i].nama === nama) {
+                // Isi email dan nomor hp
+                emailInput.value = pendaftar[i].email;
+                nomorHpInput.value = pendaftar[i].nomor_hp;
+
+                // Temukan IPK sesuai dengan semester yang dipilih
+                var ipk = '';
+                for (var j = 0; j < pendaftar[i].semesters.length; j++) {
+                    if (pendaftar[i].semesters[j].semester === semester) {
+                        ipk = pendaftar[i].semesters[j].ipk;
+                        break;
+                    }
+                }
+
+                // Isi IPK terakhir
+                ipkInput.value = ipk;
+                
+                // Disable atau enable pilihan beasiswa dan tombol daftar berdasarkan IPK dibawah 3.0
+                var beasiswaSelect = document.getElementById('beasiswa');
+                var simpanButton = document.getElementById('simpan');
+                if (ipk < 3.0) {
+                    beasiswaSelect.disabled = true;
+                    simpanButton.disabled = true;
+                } else {
+                    beasiswaSelect.disabled = false;
+                    simpanButton.disabled = false;
+                }
+                break;
             }
         }
     }
+
+    // Panggil updateSemesterOptions saat halaman dimuat pertama kali untuk mengisi pilihan semester
+    window.onload = updateSemesterOptions;
+
+    // Event listener untuk mengupdate pilihan semester saat nama dipilih
+    document.getElementById('nama').addEventListener('change', function() {
+        updateSemesterOptions();
+    });
+
+    // Event listener untuk mengupdate IPK saat semester dipilih
+    document.getElementById('semester').addEventListener('change', function() {
+        updateIPK();
+    });
+
+    
 </script>
 
 @endsection

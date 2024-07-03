@@ -17,7 +17,6 @@ class DaftarController extends Controller
         // Menampilkan halaman daftar dengan data beasiswa dan semester
         return view('daftar', [
             'beasiswas' => Beasiswa::all(),
-            'semesters' => Semester::all(),
         ]);
     }
 
@@ -34,42 +33,30 @@ class DaftarController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi data yang diinputkan oleh user
-        $data = request()->validate([
+        // Validasi data yang diterima
+        $request->validate([
             'nama' => 'required',
-            'email' => 'required | email | email:rfc,dns',
-            'nomor_hp' => 'required | numeric | digits_between:10,13',
+            'email' => 'required|email',
+            'nomor_hp' => 'required',
             'semester' => 'required',
             'ipk' => 'required',
             'beasiswa' => 'required',
-            'berkas' => 'required | file | mimes:pdf,jpg,png',
+            'berkas' => 'required',
         ]);
-        
-        // Menyimpan berkas yang diupload oleh user
-        if(request('berkas')){
-            $berkas = request('berkas')->store('berkas','public');
-            $data['berkas'] = basename($berkas);
-        }
 
-        // Mengubah id semester dan id beasiswa menjadi nama semester dan nama beasiswa
-        $semester_nama = Semester::where('id', $data['semester'])->first();
-        $semester_nama = $semester_nama->nama;
-        $beasiswa_nama = Beasiswa::where('id', $data['beasiswa'])->first();
-        $beasiswa_nama = $beasiswa_nama->nama;
-        
         // Menyimpan data pendaftar ke dalam database
         Pendaftar::create([
-            'nama' => $data['nama'],
-            'email' => $data['email'],
-            'nomor_hp' => $data['nomor_hp'],
-            'ipk' => $data['ipk'],
-            'semester' => $semester_nama,
-            'beasiswa' => $beasiswa_nama,
-            'berkas' => $data['berkas'],
-            'status_ajuan' => 'Belum Diverifikasi',
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'nomor_hp' => $request->nomor_hp,
+            'semester' => $request->semester,
+            'ipk' => $request->ipk,
+            'beasiswa' => $request->beasiswa,
+            'berkas' => $request->berkas,
+            'status_ajuan' => 'Menunggu',
         ]);
 
-        // Mengambil data pendaftar terbaru untuk ditampilkan di halaman hasil
+        // Redirect ke halaman daftar dengan pesan sukses
         $data = Pendaftar::latest()->first();
         return redirect()->route('hasil')->with('data', $data);
     }
